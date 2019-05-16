@@ -1,0 +1,46 @@
+version: "3.6"
+services:
+  nginx:
+    image: jwilder/nginx-proxy:alpine
+    container_name: nginx
+    restart: always
+    environment:
+      - DEFAULT_HOST=${VIRTUAL_HOST:-localhost}
+    networks:
+      - frontend
+    ports:
+      - ${HTTPS_PORT:-443}:443
+    volumes:
+      - ${LOCAL_SSL_CERTS:-./volumes/ssl}:/etc/nginx/certs
+      - ${LOCAL_DOCKER_SOCK:-/var/run/docker.sock}:/tmp/docker.sock:ro
+
+  teampass:
+    image: teampass/teampass
+    container_name: teampass
+    restart: always
+    environment:
+      - VIRTUAL_HOST=${VIRTUAL_HOST:-localhost}
+    networks:
+      - frontend
+      - backend
+    volumes:
+      - ${LOCAL_TEAMPASS_HOME:-./volumes/teampass}:/var/www/html
+      - ${LOCAL_PHP_SESSION:-./volumes/php/session}:/var/php/session
+
+  db:
+    restart: always
+    image: mysql/mysql-server:5.7
+    container_name: db
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-mypass}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-teampass}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-teampass}
+      - MYSQL_USER=${MYSQL_USER:-teampass}
+    volumes:
+      - ${LOCAL_DB_DATA:-./volumes/db}:/var/lib/mysql
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:

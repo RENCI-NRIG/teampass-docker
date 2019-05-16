@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+# PyCharm IDE
+.idea
+# Self signed SSL key pair
+!volumes/
+
+volumes/*
+!volumes/ssl/
+
+volumes/ssl/*
+!volumes/ssl/localhost.crt
+!volumes/ssl/localhost.key
