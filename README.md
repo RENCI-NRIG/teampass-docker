@@ -64,6 +64,24 @@ LOCAL_DOCKER_SOCK=-/var/run/docker.sock  # Local docker socket
 
 **NOTE**: The contents of `LOCAL_SSL_CERTS` should contain the certificates and private keys for any virtual hosts in use. The certificate and keys should be named after the virtual host with a `.crt` and `.key` extension. For example, a container with `VIRTUAL_HOST=foo.bar.com` should have a `foo.bar.com.crt` and `foo.bar.com.key` file in the certs directory.
 
+**SSL - certificates for development**
+
+A development SSL certificate pair is included in this repository.
+
+- `localhost.crt` - public certificate
+- `localhost.key` - private key
+
+Since this certificate is not reckognized by any CA, do not use this for anything beyond local development (Never use in production)
+
+The certificate pair was generated as follows:
+
+```
+openssl req -newkey rsa:4096 -days 3650 -nodes -x509 \
+  -subj "/C=US/ST=North Carolina/L=Chapel Hill/O=Local/OU=Development/CN=local.dev/emailAddress=email@local.dev" \
+  -keyout localhost.key \
+  -out localhost.crt
+```
+
 ## Deploy
 
 Once the environment is configured, the user can bring all the services up using docker compose.
