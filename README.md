@@ -164,7 +164,7 @@ Press the [Move to home page]() link and sign in
 
 <img width="80%" alt="Home page" src="https://user-images.githubusercontent.com/5332509/57863318-dd821d80-77c7-11e9-9500-9c1d28011fb7.png">
 
-Refer to the [documentation]() to learn about all configuration options
+Refer to the [documentation](https://teampass.readthedocs.io/en/latest/) to learn about all configuration options
 
 <img width="80%" alt="Done" src="https://user-images.githubusercontent.com/5332509/57863423-128e7000-77c8-11e9-9997-8394bc4f58af.png">
 
