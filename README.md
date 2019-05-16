@@ -20,6 +20,8 @@ docker-compose up -d
 
 From your browser, navigate to [https://localhost:443]() and configure your TeamPass deployment.
 
+<img width="80%" alt="Start page" src="https://user-images.githubusercontent.com/5332509/57861843-5c298b80-77c5-11e9-9c86-356eaca91ed5.png">
+
 Enjoy!
 
 ## Setup and Configuration
@@ -83,10 +85,72 @@ teampass   /bin/sh /teampass-docker-s ...   Up             443/tcp, 80/tcp, 9000
 
 From your browser, navigate to the location defined by [$VIRTUAL\_HOST:$HTTPS\_PORT]() and configure your TeamPass deployment. From the example this is [https://localhost:443]().
 
+### Welcome page
+
+<img width="80%" alt="Welcome" src="https://user-images.githubusercontent.com/5332509/57861843-5c298b80-77c5-11e9-9c86-356eaca91ed5.png">
+
+
 ## TeamPass Configuration
 
-Use `/var/www/html/sk` for the absolute path of your saltkey
+Starting from the configuration Welcome page, follow the prompts using the values as set from the `.env` file as they apply to each section. This generally follows the format of filling in the prompts, pressing the **Launch** button, and the pressing the **Next** button.
 
+The following example uses the default settings as found in the `.env` file.
+
+### Server checks
+
+- Absolute path to teampass folder: **/var/www/html**
+- Full URL to teampass: **https://localhost**
+
+<img width="80%" alt="Server checks" src="https://user-images.githubusercontent.com/5332509/57862088-c9d5b780-77c5-11e9-9b8e-9474eb3e5a72.png">
+
+### Database connection
+
+- Host: **db**
+- DataBase name: **teampass**
+- Login: **teampass**
+- Password: **teampass**
+- Port: **3306**
+
+<img width="80%" alt="Database connection" src="https://user-images.githubusercontent.com/5332509/57862598-9d6e6b00-77c6-11e9-8ca5-5db00ca0b961.png">
+
+### Preparation
+
+Per the [documentation](https://github.com/nilsteampassnet/TeamPass), use `/var/www/html/sk` for the absolute path of your saltkey
+
+- Table prefix: **teampass_**
+- Absolute path to SaltKey: **/var/www/html/sk**
+- Administrator password: **adminpass**
+
+<img width="80%" alt="Preparation" src="https://user-images.githubusercontent.com/5332509/57862873-11107800-77c7-11e9-8d7b-04518c5960b6.png">
+
+### Tables creation
+
+Press the **Launch** button to generate tables
+
+<img width="80%" alt="Tables creation" src="https://user-images.githubusercontent.com/5332509/57863010-4fa63280-77c7-11e9-98ef-b01566ce101d.png">
+
+### Finalization
+
+Press the **Launch** button to finalize installation
+
+<img width="80%" alt="Finalization" src="https://user-images.githubusercontent.com/5332509/57863128-7d8b7700-77c7-11e9-9fc7-c9d302e66aca.png">
+
+### Resume
+
+<img width="80%" alt="Resume" src="https://user-images.githubusercontent.com/5332509/57863199-a3b11700-77c7-11e9-9a49-bd78a2368acf.png">
+
+Press the [Move to home page]() link and sign in
+
+- Account: **admin**
+- Password: **adminpass**
+
+<img width="80%" alt="Home page" src="https://user-images.githubusercontent.com/5332509/57863318-dd821d80-77c7-11e9-9500-9c1d28011fb7.png">
+
+Refer to the [documentation]() to learn about all configuration options
+
+<img width="80%" alt="Done" src="https://user-images.githubusercontent.com/5332509/57863423-128e7000-77c8-11e9-9997-8394bc4f58af.png">
+
+Enjoy!
 
 ## Clean up
 
